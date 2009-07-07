@@ -749,8 +749,9 @@ sub ndie {
 	eval { File::Temp::cleanup(); };
 	my $msg = shift;
 	chomp $msg;
-	print "ERROR: $msg\n";
-	exit 3;
+	add_critical("ERROR: $msg");
+	finishup();
+	exit 2;
 }
 
 sub msg { ## no critic
